@@ -61,3 +61,19 @@ export const saveJournalEntry = (newEntry) => {
 
     });
 };
+
+export const deleteJournalEntry = (deleteEntry) => {
+  fetch(`http://localhost:8088/entries/${deleteEntry}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: null
+  })
+  .then(() => {
+    getEntries()
+  })
+  .then(() => {
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+  });
+}
