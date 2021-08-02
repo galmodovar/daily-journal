@@ -1,0 +1,12 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, textarea {
+    width: 50%;
+}
+
+button {
+    width: 25%;
+}

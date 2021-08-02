@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "id": 1,
+      "date": "07/24/2025",
+      "concept": "HTML & CSS",
+      "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
+      "mood": "sad"
+    },
+    {
+      "id": 2,
+      "date": "7/15/2021",
+      "concept": "Javascript Objects",
+      "entry": "We talked about javascript objects.",
+      "mood": "happy"
+    },
+    {
+      "id": 3,
+      "date": "7/15/2021",
+      "concept": "Git and Github",
+      "entry": "We talked about proper workflow within a team and how to push projects.",
+      "mood": "ok"
+    },
+    {
+      "id": 4
+    }
+  ]
+}
