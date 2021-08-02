@@ -19,7 +19,7 @@ export const Entries = () => {
         allEntriesAsHTML += `
                 <h1>${entry.date} ${entry.concept}</h1>  
                 <div>Entry - ${entry.entry}</div>
-                <div>Mood - ${entry.mood}</div>
+                <div>Mood - ${entry.mood.mood}</div>
                 
                 `
     }

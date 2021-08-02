@@ -1,19 +1,19 @@
-import { saveJournalEntry } from "./database.js"
+import { saveJournalEntry, getMoodEntry } from "./database.js"
 
 
 document.addEventListener(
     "click",
     (event) => {if (event.target.id === "saveEntry") {
-        const newDate = document.querySelector(".entryForm__date")
-        const newConcept = document.querySelector(".entryForm__subject")
-        const saveEntry = document.querySelector(".entryForm__entry")
-        const newMood = document.querySelector(".entryForm__mood")
+        const newDate = document.querySelector(".entryForm__date").value
+        const newConcept = document.querySelector(".entryForm__subject").value
+        const saveEntry = document.querySelector(".entryForm__entry").value
+        const newMood = parseInt(document.querySelector(".entryForm__mood").value)
 
         const newEntry = {
-            date: newDate.value ,
-            concept: newConcept.value ,
-            entry: saveEntry.value  ,
-            mood: newMood.value
+            date: newDate,
+            concept: newConcept ,
+            entry: saveEntry ,
+            moodId: newMood
         }
         saveJournalEntry(newEntry)
     }
@@ -21,6 +21,7 @@ document.addEventListener(
 )
 
 export const journalForm = () => {
+    let allMoods = getMoodEntry()
     return `
     <form class="entryForm">
     <fieldset>
@@ -38,10 +39,14 @@ export const journalForm = () => {
     <fieldset>
         <label for="moodToday">Mood Today</label>
         <select name="mood" class="entryForm__mood">
-            <option value="happy">happy</option>
-            <option value="frustrated">frustrated</option>
-            <option value="ok">ok</option>
-            <option value="sad">sad</option>
+        ${
+            allMoods.map(
+                (mood) => {
+                    return `<option value="${ mood.id }">${ mood.mood }</option>`
+                }
+            ).join("")
+        }
+        
           </select>
     </fieldset>
     </form>

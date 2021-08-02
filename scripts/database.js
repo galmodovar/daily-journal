@@ -7,29 +7,43 @@
  */
 const database = {
   entries: [],
+  moods:[]
 };
 
 /*
     You export a function that provides a version of the
     raw data in the format that you want
 */
+export const getEntries = () => {
+  return fetch("http://localhost:8088/entries?_expand=mood") // Fetch from the API
+    .then(res => res.json()) // Parse as JSON
+    // What should happen when we finally have the array?
+    .then(entry => {database.entries = entry});
+};
+export const getMoods = () => {
+  return fetch("http://localhost:8088/moods") // Fetch from the API
+    .then(res => res.json()) // Parse as JSON
+    .then(moods => {database.moods = moods});
+};
+
+
+
 export const getJournalEntries = () => {
   const copyOfData = database.entries.map((entry) => ({ ...entry }));
   return copyOfData;
 };
 
-export const getEntries = () => {
-  return fetch("http://localhost:8088/entries") // Fetch from the API
-    .then((res) => res.json()) // Parse as JSON
-    .then((entry) => (database.entries = entry));
+export const getMoodEntry = () => {
+  const copyOfData = database.moods.map(mood => ({ ...mood }));
+  return copyOfData;
 };
 
-// What should happen when we finally have the array?
+
 
 
 export const saveJournalEntry = (newEntry) => {
   // Use `fetch` with the POST method to add your entry to your API
-  fetch("http://localhost:8088/entries", {
+  fetch("http://localhost:8088/entries?_expand=mood", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

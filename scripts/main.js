@@ -1,10 +1,11 @@
 import { DailyJournal } from "./DailyJournal.js"
-import { getEntries } from "./database.js"
+import { getEntries, getMoods } from "./database.js"
 
 const container = document.querySelector("#container")
 
 
 const render = () => {
+    getMoods()
     getEntries().then(() => {
         
         container.innerHTML = `
