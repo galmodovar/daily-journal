@@ -6,13 +6,16 @@ document.addEventListener(
     (event) => {if (event.target.id === "saveEntry") {
         const newDate = document.querySelector(".entryForm__date")
         const newConcept = document.querySelector(".entryForm__subject")
+        const saveEntry = document.querySelector(".entryForm__entry")
+        const newMood = document.querySelector(".entryForm__mood")
+
         const newEntry = {
             date: newDate.value ,
             concept: newConcept.value ,
-            entry: ,
-            mood: 
+            entry: saveEntry.value  ,
+            mood: newMood.value
         }
-        saveJournalEntry()
+        saveJournalEntry(newEntry)
     }
     }
 )
@@ -34,10 +37,10 @@ export const journalForm = () => {
     </fieldset>
     <fieldset>
         <label for="moodToday">Mood Today</label>
-        <select name="mood" id="mood">
+        <select name="mood" class="entryForm__mood">
             <option value="happy">happy</option>
             <option value="frustrated">frustrated</option>
-            <option value="confident">ok</option>
+            <option value="ok">ok</option>
             <option value="sad">sad</option>
           </select>
     </fieldset>

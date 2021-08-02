@@ -27,14 +27,14 @@ export const getEntries = () => {
 // What should happen when we finally have the array?
 
 
-export const saveJournalEntry = (newJournalEntry) => {
+export const saveJournalEntry = (newEntry) => {
   // Use `fetch` with the POST method to add your entry to your API
   fetch("http://localhost:8088/entries", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(newJournalEntry),
+    body: JSON.stringify(newEntry),
   })
     .then(() => {
       //  Get all journal entries
